@@ -38,12 +38,27 @@ void readWrite() {
 			else {
 				mult = false;
 			}
-			//assess of sum of digits is odd or even
-
+			//assess if sum of digits is odd or even
+			int sum = 0;
+		    while (number != 0) {
+				sum = sum + number % 10;
+				number = number / 10;
+			}
+			if(sum % 2 == 0) {
+				sumEven = true;
+			}
+			else {
+				sumEven = false;
+			}
+			//assess if number is prime	
 		}	
 	}
 }
 
 void answerIntegerQuestions(const int num, bool * isMultiple, bool * isSumEven, bool * isPrime) {
+
+}
+
+bool primeCheck(int n) {
 
 }
