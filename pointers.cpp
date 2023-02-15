@@ -24,7 +24,13 @@ void readWrite() {
 
 	bool prime;
 	bool *pPrime = &prime;
+
+	int numReserve;
 		while(inputFile >> number) {
+			//reserve number from change
+			numReserve = number;
+			//assess if prime
+			prime = primeCheck(number);
 			//assess if multiple of 7,11, or 13
 			if(number % 7 == 0) {
 				mult = true;
@@ -50,15 +56,41 @@ void readWrite() {
 			else {
 				sumEven = false;
 			}
-			//assess if number is prime	
+			answerIntegerQuestions(numReserve, &mult, &sumEven, &prime);
 		}	
 	}
 }
 
 void answerIntegerQuestions(const int num, bool * isMultiple, bool * isSumEven, bool * isPrime) {
-
+	std::cout << "Number: " << num << std::endl;
+	if(*isMultiple == 0) {
+		std::cout << "Multiple of 7,11,13: " << "No" << std::endl;
+	}
+	else {
+		std::cout << "Multiple of 7,11,13: " << "Yes" << std::endl;
+	}
+	if(*isSumEven == 0) {
+		std::cout << "Is the sum of the digits even: " << "No" << std::endl;
+	}
+	else {
+		std::cout << "Is the sum of the digits even: " << "Yes" << std::endl;
+	}
+	if(*isPrime == 0) {
+		std::cout << "Is it prime: " << "No" << std::endl;
+	}
+	else {
+		std::cout << "Is it prime: " << "Yes" << std::endl;
+	}
+	std::cout << "\n" << std::endl;
 }
 
-bool primeCheck(int n) {
+bool primeCheck(int number) {
 
+if(number < 2) return false;
+if(number == 2) return true;
+if(number % 2 == 0) return false;
+	for(int i=3; (i*i)<=number; i+=2){
+		if(number % i == 0 ) return false;
+	}
+    return true;
 }
