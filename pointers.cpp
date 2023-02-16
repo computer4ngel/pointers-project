@@ -2,6 +2,8 @@
 #include <string>
 #include <fstream>
 #include "pointers.h"
+#include <cstdlib>
+
 
 void readWrite() {
 //opens numbers.txt
@@ -94,3 +96,48 @@ if(number % 2 == 0) return false;
 	}
     return true;
 }
+void initializeLottery() {
+int npNums = 10;
+
+int nArray[npNums] = {13579,26791,26792,33445,55555,62483,77777,79422,85647,93121};
+
+srand(time(0));
+int winNum;
+winNum = rand () % 9;
+winNum = nArray[winNum];
+
+
+int playerNums = 0;
+int *pPlayerNums = &playerNums;
+std::cout << "Please enter a 5 digit lottery number: ";
+std::cin >> playerNums;
+std::cin.ignore(0);
+
+findWinningLotteryTicket(winNum, &playerNums, nArray);
+
+}
+
+bool findWinningLotteryTicket(const int winningTicketNum, const int * playerNumbers, const int numPlayerNumbers[10]) {
+
+bool win;
+
+for(int i = 0; i<9; ++i) {
+	if(*playerNumbers == numPlayerNumbers[i]){
+		win = true;
+		std::cout << "Win!" << std::endl;
+		break;
+	}
+	else {
+		win = false;
+	}
+}
+	if (win == false) {
+		std::cout << "Loss." << std::endl;
+	}
+	else {
+		return 1;
+	}
+
+return 0;
+}
+
