@@ -65,18 +65,21 @@ void readWrite() {
 
 void answerIntegerQuestions(const int num, bool * isMultiple, bool * isSumEven, bool * isPrime) {
 	std::cout << "Number: " << num << std::endl;
+	//prints answer 1
 	if(*isMultiple == 0) {
 		std::cout << "Multiple of 7,11,13: " << "No" << std::endl;
 	}
 	else {
 		std::cout << "Multiple of 7,11,13: " << "Yes" << std::endl;
 	}
+	//prints answer 2
 	if(*isSumEven == 0) {
 		std::cout << "Is the sum of the digits even: " << "No" << std::endl;
 	}
 	else {
 		std::cout << "Is the sum of the digits even: " << "Yes" << std::endl;
 	}
+	//prints answer 3
 	if(*isPrime == 0) {
 		std::cout << "Is it prime: " << "No" << std::endl;
 	}
@@ -87,7 +90,7 @@ void answerIntegerQuestions(const int num, bool * isMultiple, bool * isSumEven, 
 }
 
 bool primeCheck(int number) {
-
+//algorithm for prime assessment
 if(number < 2) return false;
 if(number == 2) return true;
 if(number % 2 == 0) return false;
@@ -98,15 +101,16 @@ if(number % 2 == 0) return false;
 }
 void initializeLottery() {
 int npNums = 10;
-
+//creates array for winning numbers
 int nArray[npNums] = {13579,26791,26792,33445,55555,62483,77777,79422,85647,93121};
 
+//chooses random number to win
 srand(time(0));
 int winNum;
 winNum = rand () % 9;
 winNum = nArray[winNum];
 
-
+//prompts player for their guess
 int playerNums = 0;
 int *pPlayerNums = &playerNums;
 std::cout << "Please enter a 5 digit lottery number: ";
@@ -118,9 +122,9 @@ findWinningLotteryTicket(winNum, &playerNums, nArray);
 }
 
 bool findWinningLotteryTicket(const int winningTicketNum, const int * playerNumbers, const int numPlayerNumbers[10]) {
-
+//win condition
 bool win;
-
+//runs through winning numbers assessing if playernum matches the array
 for(int i = 0; i<9; ++i) {
 	if(*playerNumbers == numPlayerNumbers[i]){
 		win = true;
@@ -141,3 +145,24 @@ for(int i = 0; i<9; ++i) {
 return 0;
 }
 
+std::string * createWordsArray(std::ifstream& inFile, const int size) {
+//creates string for each of the 5 words per sentence structure
+std::string w1, w2, w3, w4, w5;
+std::string arr[size];
+//creates pointer to array of words
+std::string * finArr = arr;
+//takes strings from file and forms array
+for(int i = 0; i < size; i++) {
+	inFile >> arr[i];
+}
+//returns array as pointer
+	return finArr;
+}
+
+void generateSentence(std::string * sentence,
+	const std::string * articlesArr, const int articlesSize,
+	const std::string * nounsArr, const int nounsSize,
+	const std::string * verbsArr, const int verbsSize, 
+	const std::string * prepsArr, const int prepsSize) {
+	
+}

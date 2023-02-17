@@ -12,4 +12,12 @@ void initializeLottery();
 
 bool findWinningLotteryTicket(const int winningTicketNum, const int * playerNumbers, const int numPlayerNumbers[10]);
 
+std::string * createWordsArray(std::ifstream& inFile, const int size);
+
+void generateSentence(std::string * sentence,
+		const std::string * articlesArr, const int articlesSize,
+		const std::string * nounsArr, const int nounsSize,
+		const std::string * verbsArr, const int verbsSize, 
+		const std::string * prepsArr, const int prepsSize);
+
 #endif
